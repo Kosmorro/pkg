@@ -1,0 +1,8 @@
+Package: python3-skyfield-data
+Version: __VERSION__
+Section: science
+Priority: optional
+Architecture: all
+Depends: python3
+Maintainer: Deuchnord <jerome@deuchnord.fr>
+Description: A program to calculate the ephemerides

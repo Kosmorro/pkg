@@ -1,0 +1,8 @@
+Package: kosmorro
+Version: __VERSION__
+Section: science
+Priority: optional
+Architecture: all
+Depends: python3, python3-kosmorrolib, python3-termcolor, python3-tabulate, python3-dateutil, python3-babel
+Maintainer: Deuchnord <jerome@deuchnord.fr>
+Description: A program to calculate the ephemerides
