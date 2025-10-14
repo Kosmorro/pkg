@@ -1,0 +1,39 @@
+name: Check packages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - skyfield-data
+          - kosmorrolib
+          - kosmorro
+        type:
+          - deb
+        
+    name: "${{ matrix.package }} (${{ matrix.type }})"
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - run: |
+          pip install ${{ matrix.package }}
+
+      - run: |
+          sudo apt update
+          sudo apt install dpkg fakeroot lintian
+      
+      - run: make ${{ matrix.package }}.deb
+
+      - run: lintian -i ${{ matrix.package }}_*.deb
