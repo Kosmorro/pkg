@@ -13,13 +13,16 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - skyfield-data
-          - kosmorrolib
-          - kosmorro
+          - pypi: skyfield-data
+            recipe: python3-skyfield-data
+          - pypi: kosmorrolib
+            recipe: python3-kosmorrolib
+          - pypi: kosmorro
+            recipe: kosmorro
         type:
           - deb
-        
-    name: "${{ matrix.package }} (${{ matrix.type }})"
+
+    name: "${{ matrix.package.pypi }} (${{ matrix.type }})"
     steps:
       - uses: actions/checkout@v5
 
@@ -28,12 +31,12 @@ jobs:
           python-version: "3.x"
 
       - run: |
-          pip install ${{ matrix.package }}
+          pip install ${{ matrix.package.pypi }}
 
       - run: |
           sudo apt update
-          sudo apt install dpkg fakeroot lintian
-      
-      - run: make ${{ matrix.package }}.deb
+          sudo apt install ronn dpkg fakeroot lintian
 
-      - run: lintian -i ${{ matrix.package }}_*.deb
+      - run: make ${{ matrix.package.recipe }}.deb
+
+      - run: lintian -i ${{ matrix.package.recipe }}_*.deb

@@ -1,8 +1,16 @@
 Package: kosmorro
+Homepage: https://kosmorro.space
 Version: __VERSION__
 Section: science
 Priority: optional
 Architecture: all
 Depends: python3, python3-kosmorrolib, python3-termcolor, python3-tabulate, python3-dateutil, python3-babel
 Maintainer: Deuchnord <jerome@deuchnord.fr>
-Description: A program to calculate the ephemerides
+Description: Ephemerides calculation program
+ Kosmorro is a program that calculates your astronomical ephemerides.
+ It provides the following features:
+  - Calculate the rise, culmination and set times for any date and any position
+    on Earth
+  - Get informed about interesting astronomical events
+  - Generate a PDF with all the information needed for your observation nights
+ All calculations are made offline, no Internet connection needed.
