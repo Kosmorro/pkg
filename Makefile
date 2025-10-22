@@ -13,7 +13,7 @@ clean:
 	aptly repo drop main || true
 
 	rm -rf ~/.aptly/public/
-	rm -rf main repos
+	rm -rf main repos tmp
 
 
 packages: deb
@@ -108,7 +108,10 @@ kosmorro.deb:
 	mkdir -p kosmorro-deb/usr/lib/python3/dist-packages
 
 	pip install --target=tmp kosmorro
+	# remove pycache folders:
 	rm -rf tmp/kosmorro/__pycache__ tmp/kosmorro/i18n/__pycache__
+	# Replace shebang in executable:
+	echo -e "#!/usr/bin/env python3\n$$(tail -n +2 tmp/bin/kosmorro)" > tmp/bin/kosmorro
 
 	cp -r tmp/kosmorro kosmorro-deb/usr/lib/python3/dist-packages
 	cp -r tmp/kosmorro-$(KOSMORRO_VERSION).dist-info kosmorro-deb/usr/lib/python3/dist-packages
