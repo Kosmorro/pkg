@@ -5,6 +5,7 @@ Section: science
 Priority: optional
 Architecture: all
 Depends: python3, python3-kosmorrolib, python3-termcolor, python3-tabulate, python3-dateutil, python3-babel
+Suggests: texlive
 Maintainer: Deuchnord <jerome@deuchnord.fr>
 Description: Ephemerides calculation program
  Kosmorro is a program that calculates your astronomical ephemerides.
