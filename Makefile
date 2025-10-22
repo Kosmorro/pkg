@@ -9,7 +9,6 @@ clean:
 	rm -rf *.deb
 
 	aptly publish drop main || true
-	aptly snapshot drop main || true
 	aptly repo drop main || true
 
 	rm -rf ~/.aptly/public/
@@ -34,19 +33,16 @@ repo-apt:
 	mkdir main && mv *.deb main
 	aptly repo create main
 	aptly repo add main main/
-	aptly snapshot create main from repo main
 	mkdir -p ~/.aptly/public
-	aptly publish snapshot --architectures=all --distribution=main --gpg-key="$(DEBPKG_KEY_ID)" main
+	aptly publish repo --architectures=all --distribution=main --suite=stable --gpg-key="$(DEBPKG_KEY_ID)" main
 
 	rm -rf repos/apt
 
 	mkdir -p repos
 	cp -r ~/.aptly/public repos/apt
-	mv repos/apt/dists/main repos/apt/dists/stable
 
 	# Clean:
 	aptly publish drop main
-	aptly snapshot drop main
 	aptly repo drop main
 
 	rm -rf main
