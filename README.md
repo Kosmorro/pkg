@@ -1,4 +1,4 @@
-# Kosmorro repositories
+# Kosmorro Linux repositories
 
 This repository contains recipes to build and publish packages and repositories for various Linux distributions.
 
