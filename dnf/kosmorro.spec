@@ -1,5 +1,5 @@
 Name:           kosmorro
-Version:        1.0.1
+Version:        1.0.2
 Release:        1%{?dist}
 Summary:        Astronomical ephemerides computation program
 
@@ -56,5 +56,9 @@ All calculations are made offline, no Internet connection needed.
 %doc README.md
 
 %changelog
+* Tue May 5 2026 Deuchnord <jerome@deuchnord.fr> - 1.0.2-1
+- include the translation files correctly in wheel
+- fix pytz dependency that prevents Kosmorro to be installed on some distributions
+
 * Mon Apr 13 2026 Deuchnord <jerome@deuchnord.fr> - 1.0.1-1
 - Initial package for Fedora/COPR
