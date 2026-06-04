@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        Astronomical ephemerides computation program
 
 License:        AGPL-3.0-or-later
-URL:            https://kosmorro.space/lib
+URL:            https://kosmorro.space
 Source0:        https://files.pythonhosted.org/packages/source/k/kosmorro/kosmorro-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
